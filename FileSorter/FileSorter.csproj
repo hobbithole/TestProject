@@ -41,7 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="FIileSorter.cs" />
+    <Compile Include="FileSorter.cs" />
     <Compile Include="MainEntry.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UserGrade.cs" />

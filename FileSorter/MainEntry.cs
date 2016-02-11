@@ -9,9 +9,12 @@ namespace FileSorter
     {
         static void Main(string[] args)
         {
-            //var inputFileName = ReadInputFileName(args);
+           var inputFileName = args[0];
+           var fileSorter = new FileSorter(inputFileName);
+           fileSorter.ReadInput();
+           fileSorter.WriteOutputFile();
         }
-
+        
         
     }
 }

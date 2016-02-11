@@ -23,8 +23,8 @@ namespace FileSorter
                 return null;
             return new UserGrade()
             {
-                Firstname = userGradeArray[0],
-                Lastname = userGradeArray[1],
+                Lastname = userGradeArray[0],
+                Firstname  = userGradeArray[1],
                 Score    = score
             };
 
@@ -33,7 +33,7 @@ namespace FileSorter
         public override string ToString()
         {
             StringBuilder userGradeString = new StringBuilder();
-            userGradeString.AppendFormat("{0},{1},{2}", Firstname, Lastname, Score);
+            userGradeString.AppendFormat("{0},{1},{2}", Lastname, Firstname, Score);
             return userGradeString.ToString();
         }
     }

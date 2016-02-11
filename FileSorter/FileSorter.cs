@@ -28,14 +28,18 @@ namespace FileSorter
             file.Close();
             return true;
         }
-
         
         public bool WriteOutputFile()
         {
+            WriteOutputFile(_filename + "-graded.txt");
+            return true;
+        }
+        public bool WriteOutputFile(string filename)
+        {
             List<UserGrade> sortedList;
-            sortedList = (from ug in userGrades orderby ug.Score, ug.Lastname, ug.Firstname select ug).ToList();
+            sortedList = (from ug in userGrades orderby ug.Score descending , ug.Lastname , ug.Firstname  select ug).ToList();
             using (System.IO.StreamWriter file =
-            new StreamWriter(@"C:\Users\Public\TestFolder\WriteLines2.txt"))
+            new StreamWriter(filename))
             {
                 foreach (var userGrade in sortedList)
                 {
