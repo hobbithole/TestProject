@@ -72,9 +72,16 @@ namespace FileSorter
         }
         
        public string GetOutputfilename(string filename)
-        {
-            return Path.GetFileNameWithoutExtension(filename) + "-graded.txt";
-        }
+       {
+           var pathName = Path.GetDirectoryName(filename);
+           
+           if (String.IsNullOrEmpty(pathName))
+           {
+               return Path.GetFileNameWithoutExtension(filename) + "-graded.txt";
+           }
+
+           return pathName + "\\" + Path.GetFileNameWithoutExtension(filename) + "-graded.txt";
+       }
 
     }
 }
