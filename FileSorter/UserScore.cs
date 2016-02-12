@@ -5,13 +5,13 @@ using System.Text;
 
 namespace FileSorter
 {
-    public class UserGrade
+    public class UserScore
     {
         public string Firstname  {get;set;}
         public string Lastname  {get; set;}
         public uint Score       { get; set; }
 
-        public static UserGrade Parse(string userGradeString)
+        public static UserScore Parse(string userGradeString)
         {
             var userGradeArray = userGradeString.Split(",".ToArray());
             //exit if the record does not have three entries 
@@ -21,19 +21,18 @@ namespace FileSorter
             uint score = 0;
             if (!uint.TryParse(userGradeArray[2], out score))
                 return null;
-            return new UserGrade()
+            return new UserScore()
             {
-                Lastname = userGradeArray[0],
-                Firstname  = userGradeArray[1],
+                Lastname = userGradeArray[0].Trim(),
+                Firstname  = userGradeArray[1].Trim(),
                 Score    = score
             };
-
         }
 
         public override string ToString()
         {
             StringBuilder userGradeString = new StringBuilder();
-            userGradeString.AppendFormat("{0},{1},{2}", Lastname, Firstname, Score);
+            userGradeString.AppendFormat("{0}, {1}, {2}", Lastname, Firstname, Score);
             return userGradeString.ToString();
         }
     }
