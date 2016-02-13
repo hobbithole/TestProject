@@ -6,19 +6,30 @@ using System.IO;
 
 namespace FileSorter
 {
+
+    /// <summary>
+    ///  This class performs the function of sorting scores
+    /// </summary>
     public class ScoreSorter
     {
         private string _filename;
-        List<UserScore> userGrades = new List<UserScore>();
+        private List<UserScore> _userScores = new List<UserScore>();
         public ScoreSorter()
         {
 
         }
+        /// <summary>
+        ///  constructor takes input file name
+        /// </summary>
         public ScoreSorter(string filename)
         {
             _filename = filename;
         }
 
+        /// <summary>
+        ///  Read input stream content into internal list
+        /// </summary>
+        /// <returns>boolean indicating the succcess or failure of the operation</returns>
         public bool ReadInput()
         {
             try
@@ -35,6 +46,10 @@ namespace FileSorter
                 return false;
             }
         }
+        /// <summary>
+        ///  Write sorted scores to output stream
+        /// </summary>
+        /// <returns>boolean indicating the succcess or failure of the operation</returns>
         public bool WriteOutputFile()
         {
             try
@@ -50,7 +65,11 @@ namespace FileSorter
                 return false;
             }
         }
-
+        /// <summary>
+        ///  Read input stream content into internal list
+        /// </summary>
+        /// <param name="reader">TextReader input</param>
+        /// <returns>boolean indicating the succcess or failure of the operation</returns>
         public void ReadInput(TextReader reader)
         {
             string line;
@@ -58,21 +77,30 @@ namespace FileSorter
             {
                 var userScore = UserScore.Parse(line);
                 if (userScore != null)
-                    userGrades.Add(userScore);
+                    _userScores.Add(userScore);
             }
         }
+        /// <summary>
+        ///  Write sorted scores to output stream
+        /// </summary>
+        /// <param name="writer">textwriter output</param>
+        /// <returns>boolean indicating the succcess or failure of the operation</returns>
         public void WriteOutputFile(TextWriter writer)
         {
-            List<UserScore> sortedList;
-            sortedList = (from ug in userGrades orderby ug.Score descending , ug.Lastname , ug.Firstname  select ug).ToList();
+            var sortedList = (from ug in _userScores orderby ug.Score descending , ug.Lastname , ug.Firstname  select ug).ToList();
             foreach (var userGrade in sortedList)
             {
                 writer.WriteLine(userGrade.ToString());
             }
         }
-        
-       public string GetOutputfilename(string filename)
-       {
+
+        /// <summary>
+        ///  Get output filename as specified by the spec; sample.txt -> sample-graded.txt
+        /// </summary>
+        /// <param name="filename">input file name</param>
+        /// <returns>output file name</returns>      
+        public string GetOutputfilename(string filename)
+        {
            var pathName = Path.GetDirectoryName(filename);
            
            if (String.IsNullOrEmpty(pathName))
@@ -81,7 +109,7 @@ namespace FileSorter
            }
 
            return pathName + "\\" + Path.GetFileNameWithoutExtension(filename) + "-graded.txt";
-       }
+        }
 
     }
 }

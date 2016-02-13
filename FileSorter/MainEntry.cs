@@ -8,7 +8,7 @@ namespace FileSorter
 {
     class MainEntry
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
             if(args.Length == 0)
             {
@@ -21,8 +21,8 @@ namespace FileSorter
                ShowErrorMessage();
                return;
            }
-           var inputFileName = args[0];
-           var fileSorter = new ScoreSorter(inputFileName);
+
+           var fileSorter = new ScoreSorter(filename);
            fileSorter.ReadInput();
            fileSorter.WriteOutputFile();
         }

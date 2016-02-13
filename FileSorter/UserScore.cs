@@ -5,20 +5,29 @@ using System.Text;
 
 namespace FileSorter
 {
+    /// <summary>
+    ///  UserScore class
+    /// </summary>
     public class UserScore
     {
-        public string Firstname  {get;set;}
+        public string Firstname {get;set;}
         public string Lastname  {get; set;}
-        public uint Score       { get; set; }
+        public uint   Score     { get; set; }
 
-        public static UserScore Parse(string userGradeString)
+        /// <summary>
+        ///  create a userScore instance from string 
+        /// format: lastname, firstname, score
+        /// </summary>
+        /// <param name="userScoreString"></param>
+        /// <returns>UserScore instance or null if the input string does not conform to the specified format</returns>
+        public static UserScore Parse(string userScoreString)
         {
-            var userGradeArray = userGradeString.Split(",".ToArray());
+            var userGradeArray = userScoreString.Split(",".ToArray());
             //exit if the record does not have three entries 
             if (userGradeArray.Length != 3)
                 return null;
             //check the grade is integer
-            uint score = 0;
+            uint score;
             if (!uint.TryParse(userGradeArray[2], out score))
                 return null;
             return new UserScore()
@@ -28,7 +37,11 @@ namespace FileSorter
                 Score    = score
             };
         }
-
+        /// <summary>
+        /// 
+        /// overrite ToString function
+        /// </summary>
+        /// <returns>UserScore string. Format: lastname, firstname, score</returns>
         public override string ToString()
         {
             StringBuilder userGradeString = new StringBuilder();
