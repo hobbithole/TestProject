@@ -7,8 +7,8 @@
     <ProjectGuid>{3053C738-8461-484B-BE3B-509E5A345C63}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>FileSorter</RootNamespace>
-    <AssemblyName>FileSorter</AssemblyName>
+    <RootNamespace>ScoreFileSorter</RootNamespace>
+    <AssemblyName>ScoreFileSorter</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>

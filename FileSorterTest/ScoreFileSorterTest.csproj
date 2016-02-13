@@ -49,9 +49,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\FileSorter\FileSorter.csproj">
+    <ProjectReference Include="..\FileSorter\ScoreFileSorter.csproj">
       <Project>{3053c738-8461-484b-be3b-509e5a345c63}</Project>
-      <Name>FileSorter</Name>
+      <Name>ScoreFileSorter</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
